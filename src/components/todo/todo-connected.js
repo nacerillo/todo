@@ -10,6 +10,7 @@ const ToDo = () => {
   const [list, setList] = useState([]);
 
   const _addItem = (item) => {
+    console.log(item);
     item.due = new Date();
     fetch(todoAPI, {
       method: "post",
