@@ -2,6 +2,9 @@ import React, { useEffect, useState } from "react";
 import TodoForm from "./form.js";
 import TodoList from "./list.js";
 import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import "./todo.scss";
 const ToDo = () => {
   const [list, setList] = useState([]);
@@ -80,15 +83,17 @@ const ToDo = () => {
         </h2>
       </header>
 
-      <section className="todo">
-        <div>
-          <TodoForm handleSubmit={addItem} />
-        </div>
+      <Container className="todo">
+        <Row>
+          <Col>
+            <TodoForm handleSubmit={addItem} />
+          </Col>
 
-        <div>
-          <TodoList list={list} handleComplete={toggleComplete} />
-        </div>
-      </section>
+          <Col>
+            <TodoList list={list} handleComplete={toggleComplete} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };

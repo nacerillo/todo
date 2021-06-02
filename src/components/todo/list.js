@@ -1,5 +1,7 @@
 import React, { useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import Toast from "react-bootstrap/Toast";
+import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 const ToDoList = (props) => {
   useEffect(() => {
@@ -7,22 +9,30 @@ const ToDoList = (props) => {
   }, [props]);
 
   return (
-    <ul>
+    <>
       <ListGroup>
-        <>
-          {props.list.map((item) => (
-            <ListGroup.Item
-              variant={item.complete ? "danger" : "success"}
+        {props.list.map((item) => (
+          <ListGroup.Item>
+            <Toast
               className={`complete-${item.complete.toString()} py-3`}
               key={item._id}
-              onClick={() => props.handleComplete(item._id)}
+              onClose={() => console.log("hello")}
             >
-              {item.complete ? `${item.text} X` : item.text}
-            </ListGroup.Item>
-          ))}
-        </>
+              <Toast.Header>
+                <strong>{item.assignee}</strong>
+                <Badge variant="secondary">
+                  {item.complete ? "completed" : "pending"}
+                </Badge>
+              </Toast.Header>
+              <Toast.Body onClick={() => props.handleComplete(item._id)}>
+                {item.text}
+                <div>Difficulty: {item.difficulty}</div>
+              </Toast.Body>
+            </Toast>
+          </ListGroup.Item>
+        ))}
       </ListGroup>
-    </ul>
+    </>
   );
 };
 export default ToDoList;
@@ -44,4 +54,40 @@ class ToDoList extends React.Component {
     );
   }
 }
+
+<ListGroup.Item
+                variant={item.complete ? "danger" : "success"}
+                className={`complete-${item.complete.toString()} py-3`}
+                key={item._id}
+                onClick={() => props.handleComplete(item._id)}
+              >
+                {item.complete ? `${item.text} X` : item.text}
+              </ListGroup.Item>
+///original
+     {props.list.map((item) => (
+            <ListGroup.Item
+              variant={item.complete ? "danger" : "success"}
+              className={`complete-${item.complete.toString()} py-3`}
+              key={item._id}
+              onClick={() => props.handleComplete(item._id)}
+            >
+              {item.complete ? `${item.text} X` : item.text}
+            </ListGroup.Item>
+          ))}
+<Toast onClose={() => props.remove(item._id)}>
+<Toast.Header>
+{item.assignee}
+</Toast.Header>
+<Toast.Body>
+{item.complete ? `${item.text} X` : item.text}
+</Toast.Body>
+<Toast.Footer>
+Footer
+</Toast.Footer>
+</Toast>
+
+
+
+
+
 export default ToDoList;*/
