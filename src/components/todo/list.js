@@ -12,6 +12,7 @@ const ToDoList = (props) => {
           <span onClick={() => props.handleComplete(item._id)}>
             {item.text}
           </span>
+          <button>X</button>
         </li>
       ))}
     </ul>

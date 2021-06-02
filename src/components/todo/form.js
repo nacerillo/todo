@@ -1,5 +1,8 @@
 import React, { useState } from "react";
-
+import Card from "react-bootstrap/Card";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
+import "bootstrap/dist/css/bootstrap.min.css";
 const ToDoForm = (props) => {
   const [item, setItem] = useState({});
 
@@ -19,8 +22,52 @@ const ToDoForm = (props) => {
   };
   return (
     <>
-      <h3>Add Item</h3>
-      <form onSubmit={handleSubmit}>
+      <Card>
+        <Card.Body>
+          <Card.Title>Add Item</Card.Title>
+          <Form onSubmit={handleSubmit}>
+            <Form.Group>
+              <Form.Label>To Do Item</Form.Label>
+              <Form.Control
+                name="text"
+                placeholder="Add To Do"
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Difficulty</Form.Label>
+              <Form.Control
+                defaultValue="1"
+                type="range"
+                min="1"
+                max="5"
+                name="difficulty"
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Assigned To</Form.Label>
+              <Form.Control
+                type="text"
+                name="assignee"
+                placeholder="Assigned To"
+                onChange={handleInputChange}
+              />
+            </Form.Group>
+            <Button variant="primary" type="submit">
+              Add Item
+            </Button>
+          </Form>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};
+
+export default ToDoForm;
+
+/*
+   <form onSubmit={handleSubmit}>
         <label>
           <span>To Do Item</span>
           <input
@@ -51,12 +98,7 @@ const ToDoForm = (props) => {
         </label>
         <button>Add Item</button>
       </form>
-    </>
-  );
-};
-
-export default ToDoForm;
-
+*/
 //import React from "react";
 
 /*class ToDoForm extends React.Component {

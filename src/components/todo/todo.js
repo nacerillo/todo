@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import TodoForm from "./form.js";
 import TodoList from "./list.js";
-
+import Nav from "react-bootstrap/Nav";
 import "./todo.scss";
 const ToDo = () => {
   const [list, setList] = useState([]);
@@ -73,7 +73,8 @@ const ToDo = () => {
   return (
     <>
       <header>
-        <h2>
+        <Nav class="p-3 mb-2 bg-primary text-white">Home</Nav>
+        <h2 class="p-3 mb-2 bg-dark text-white">
           There are {list.filter((item) => !item.complete).length} Items To
           Complete
         </h2>
