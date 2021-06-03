@@ -3,23 +3,26 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
+import useForm from "./hook.js";
 const ToDoForm = (props) => {
-  const [item, setItem] = useState({});
+  const [handleSubmit, handleInputChange] = useForm(props.addItem);
 
-  const handleInputChange = (e) => {
+  //const [item, setItem] = useState({});
+
+  /*const handleInputChange = (e) => {
     /*this.setState({
       let item = { ...item, [e.target.name]: e.target.value },
-    });*/
+    });
     setItem({ ...item, [e.target.name]: e.target.value });
-  };
+  };*/
 
-  const handleSubmit = (e) => {
+  /*const handleSubmit = (e) => {
     e.preventDefault();
     e.target.reset();
     props.handleSubmit(item);
     const newitem = {};
     setItem(newitem);
-  };
+  };*/
   return (
     <>
       <Card style={{ width: "20rem" }}>

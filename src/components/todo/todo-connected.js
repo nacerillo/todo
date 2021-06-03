@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
 import ToDoForm from "./form.js";
 import ToDoList from "./list.js";
-
+import Nav from "react-bootstrap/Nav";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Container from "react-bootstrap/Container";
 import "./todo.scss";
 
 const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
@@ -65,20 +68,23 @@ const ToDo = () => {
   return (
     <>
       <header>
-        <h2>
+        <Nav class="p-3 mb-2 bg-primary text-white">Home</Nav>
+        <h2 class="p-3 mb-2 bg-dark text-white">
           There are {list.filter((item) => !item.complete).length} Items To
           Complete
         </h2>
       </header>
 
-      <section className="todo">
-        <div>
-          <ToDoForm handleSubmit={_addItem} />
-        </div>
-        <div>
-          <ToDoList list={list} handleComplete={_toggleComplete} />
-        </div>
-      </section>
+      <Container className="todo">
+        <Row>
+          <Col>
+            <ToDoForm addItem={_addItem} />
+          </Col>
+          <Col>
+            <ToDoList list={list} handleComplete={_toggleComplete} />
+          </Col>
+        </Row>
+      </Container>
     </>
   );
 };
