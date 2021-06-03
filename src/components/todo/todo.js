@@ -5,15 +5,35 @@ import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
+import useAjax from "../hooks/ajax";
 import "./todo.scss";
 const ToDo = () => {
   const [list, setList] = useState([]);
-
+  const [addItem, toggleComplete, getToDos, deleteToDos, list] = useAjax();
   const addItem = (item) => {
     item._id = Math.random();
     item.complete = false;
     setList([...list, item]);
     //setList([...list, savedItem]);
+  };
+
+  const updateItem = (id, val) => {
+    let item = list.filter((i) => i._id === id)[0] || {};
+    if (item._id) {
+      item.text = val;
+      let newList = list.map((listItem) =>
+        listItem._id === item._id ? item : listItem
+      );
+      setList(newList);
+    }
+  };
+
+  const deleteItem = (id) => {
+    let item = list.filter((i) => i._id === id)[0] || {};
+    if (item._id) {
+      let newList = list.filter((listItem) => listItem._id !== id);
+      setList(newList);
+    }
   };
 
   const toggleComplete = (id) => {
@@ -86,11 +106,16 @@ const ToDo = () => {
       <Container className="todo">
         <Row>
           <Col>
-            <TodoForm handleSubmit={addItem} />
+            <TodoForm addItem={addItem} />
           </Col>
 
           <Col>
-            <TodoList list={list} handleComplete={toggleComplete} />
+            <TodoList
+              list={list}
+              handleComplete={toggleComplete}
+              deleteItem={deleteItem}
+              updateItem={updateItem}
+            />
           </Col>
         </Row>
       </Container>

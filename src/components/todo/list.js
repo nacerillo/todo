@@ -4,8 +4,9 @@ import Toast from "react-bootstrap/Toast";
 import Badge from "react-bootstrap/Badge";
 import ListGroup from "react-bootstrap/ListGroup";
 const ToDoList = (props) => {
+  // console.log(props);
   useEffect(() => {
-    console.log("name changed to:", props);
+    // console.log("name changed to:", props);
   }, [props]);
 
   return (
@@ -16,7 +17,7 @@ const ToDoList = (props) => {
             <Toast
               className={`complete-${item.complete.toString()} py-3`}
               key={item._id}
-              onClose={() => console.log("hello")}
+              onClose={() => props.deleteItem(item._id)}
             >
               <Toast.Header>
                 <strong>{item.assignee}</strong>

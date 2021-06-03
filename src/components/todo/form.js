@@ -3,8 +3,9 @@ import Card from "react-bootstrap/Card";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
-import useForm from "./hook.js";
+import useForm from "../hooks/hook";
 const ToDoForm = (props) => {
+  //console.log(props);
   const [handleSubmit, handleInputChange] = useForm(props.addItem);
 
   //const [item, setItem] = useState({});
