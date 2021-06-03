@@ -1,13 +1,13 @@
 import React from "react";
 
-class App extends React.Component {
+import ToDo from "./components/todo/todo-connected.js";
+
+export default class App extends React.Component {
   render() {
     return (
       <>
-        <div>Hello World</div>
+        <ToDo />
       </>
     );
   }
 }
-
-export default App;
