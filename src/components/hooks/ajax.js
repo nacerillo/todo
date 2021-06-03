@@ -23,7 +23,7 @@ const useAjax = () => {
       .catch(console.error);
   };
 
-  /*const _getToDoItems = async () => {
+  /* const _getToDoItems = () => {
     fetch(todoAPI, {
       method: "get",
       mode: "cors",
@@ -33,10 +33,15 @@ const useAjax = () => {
       .catch(console.error);
   };*/
 
+  /*const _updateToDoItems = async () => {};*/
+
   const _getToDoItems = async () => {
-    let rawData = await axios(todoAPI).then((response) => response.data);
-    console.log(rawData);
-    setList(rawData.results);
+    let data = await axios
+      .get(todoAPI)
+      .then((response) => response.data)
+      .catch(console.error);
+    console.log(data);
+    setList(data.results);
   };
 
   const _toggleComplete = (id) => {

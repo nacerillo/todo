@@ -21,7 +21,10 @@ const ToDo = () => {
     <>
       <header>
         <Nav class="p-3 mb-2 bg-primary text-white">Home</Nav>
-        <h2 class="p-3 mb-2 bg-dark text-white">hello</h2>
+        <h2 class="p-3 mb-2 bg-dark text-white">
+          There are ({list.filter((item) => !item.complete).length}) Items To
+          Complete
+        </h2>
       </header>
 
       <Container className="todo">
