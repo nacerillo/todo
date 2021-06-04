@@ -16,9 +16,9 @@ const ToDo = () => {
 
   const [_addItem, _toggleComplete, _getToDoItems, _deleteToDoItem, list] =
     useAjax();
-  useEffect(_getToDoItems, [context.mode]);
+  useEffect(_getToDoItems, [context.hideComplete]);
   //useEffect(_getToDoItems, [])
-  console.log("Context.Mode: ", context.mode);
+  console.log("Context.Mode: ", context.hideComplete);
 
   return (
     <>

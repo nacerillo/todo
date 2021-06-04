@@ -7,25 +7,25 @@ class Show extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      hideCompelete: true,
+      hideComplete: true,
       toggleMode: this.toggleMode,
-      limit: 5,
-      setLimit: this.setLimit,
+      // limit: 5,
+      // setLimit: this.setLimit,
     };
   }
 
   toggleMode = () => {
     console.log(this.state.hideComplete);
     this.setState({
-      mode: this.state.hideCompelete === false ? true : false,
+      hideComplete: this.state.hideCompelete === false ? true : false,
     });
   };
-  setLimit = () => {
+  /* setLimit = () => {
     console.log(this.state.limit);
     this.setState({
       limit: this.state.limit,
     });
-  };
+  };*/
 
   render() {
     return (
