@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import axios from "axios";
-
+import { ShowContext } from "../../context/showmanager.js";
 const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
 
 const useAjax = () => {
+  const context = useContext(ShowContext);
+
   const [list, setList] = useState([]);
 
   const _addItem = (item) => {
@@ -36,12 +38,18 @@ const useAjax = () => {
   /*const _updateToDoItems = async () => {};*/
 
   const _getToDoItems = async () => {
+    let finalData;
     let data = await axios
       .get(todoAPI)
       .then((response) => response.data)
       .catch(console.error);
-    console.log(data);
-    setList(data.results);
+    console.log("ALL RESULTS", data.results);
+    if (context.hideComplete === true) {
+      finalData = data.results.filter((item) => !item.complete);
+    } else {
+      finalData = data.results;
+    }
+    setList(finalData);
   };
 
   const _toggleComplete = (id) => {

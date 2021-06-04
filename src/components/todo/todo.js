@@ -5,11 +5,10 @@ import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
-import useAjax from "../hooks/ajax";
 import "./todo.scss";
 const ToDo = () => {
   const [list, setList] = useState([]);
-  const [addItem, toggleComplete, getToDos, deleteToDos, list] = useAjax();
+  //const [addItem, toggleComplete, getToDos, deleteToDos, list] = useAjax();
   const addItem = (item) => {
     item._id = Math.random();
     item.complete = false;
