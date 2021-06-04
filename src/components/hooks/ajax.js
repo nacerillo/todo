@@ -44,8 +44,8 @@ const useAjax = () => {
       .then((response) => response.data)
       .catch(console.error);
     console.log("ALL RESULTS", data.results);
-    if (context.mode === true) {
-      finalData = data.results.filter((item) => item.complete);
+    if (context.hideComplete === true) {
+      finalData = data.results.filter((item) => !item.complete);
     } else {
       finalData = data.results;
     }
