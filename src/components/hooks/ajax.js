@@ -25,28 +25,21 @@ const useAjax = () => {
       .catch(console.error);
   };
 
-  /* const _getToDoItems = () => {
-    fetch(todoAPI, {
-      method: "get",
-      mode: "cors",
-    })
-      .then((data) => data.json())
-      .then((data) => setList(data.results))
-      .catch(console.error);
-  };*/
-
-  /*const _updateToDoItems = async () => {};*/
-
   const _getToDoItems = async () => {
     let finalData;
     let data = await axios
       .get(todoAPI)
       .then((response) => response.data)
       .catch(console.error);
-    console.log("ALL RESULTS", data.results);
+    //console.log("ALL RESULTS", data.results);
     if (context.hideComplete === true) {
+      console.log(
+        "FILTERED",
+        data.results.filter((item) => !item.complete)
+      );
       finalData = data.results.filter((item) => !item.complete);
     } else {
+      console.log("unfiltered", data.results);
       finalData = data.results;
     }
     setList(finalData);
