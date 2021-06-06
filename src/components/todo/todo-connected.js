@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 //import useAjax2 from "../hooks/ajax2";
 import useAjax from "../hooks/ajax";
-import { ShowContext } from "../../context/showmanager.js";
+import { ShowContext } from "../../context/statemanager.js";
 //import Show from "../show/show.js";
 import Container from "react-bootstrap/Container";
 import "./todo.scss";
@@ -29,9 +29,6 @@ const ToDo = () => {
     []);*/
   // useEffect()
   useEffect(_getToDoItems, [context.hideComplete]);
-  //useEffect(_getToDoItems, []);
-  //console.log("Context.Mode: ", context.hideComplete);
-
   return (
     <>
       <header>
