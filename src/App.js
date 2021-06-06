@@ -1,14 +1,14 @@
 import React from "react";
-import ShowContext from "./context/showmanager";
+import StateManager from "./context/statemanager";
 import ToDo from "./components/todo/todo-connected.js";
 
 export default class App extends React.Component {
   render() {
     return (
       <>
-        <ShowContext>
+        <StateManager>
           <ToDo />
-        </ShowContext>
+        </StateManager>
       </>
     );
   }

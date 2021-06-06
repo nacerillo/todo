@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { ShowContext } from "../../context/showmanager.js";
+import { ShowContext } from "../../context/statemanager.js";
 const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
 
 const useAjax = () => {
@@ -25,28 +25,21 @@ const useAjax = () => {
       .catch(console.error);
   };
 
-  /* const _getToDoItems = () => {
-    fetch(todoAPI, {
-      method: "get",
-      mode: "cors",
-    })
-      .then((data) => data.json())
-      .then((data) => setList(data.results))
-      .catch(console.error);
-  };*/
-
-  /*const _updateToDoItems = async () => {};*/
-
   const _getToDoItems = async () => {
     let finalData;
     let data = await axios
       .get(todoAPI)
       .then((response) => response.data)
       .catch(console.error);
-    console.log("ALL RESULTS", data.results);
+    //console.log("ALL RESULTS", data.results);
     if (context.hideComplete === true) {
+      console.log(
+        "FILTERED",
+        data.results.filter((item) => !item.complete)
+      );
       finalData = data.results.filter((item) => !item.complete);
     } else {
+      console.log("unfiltered", data.results);
       finalData = data.results;
     }
     setList(finalData);

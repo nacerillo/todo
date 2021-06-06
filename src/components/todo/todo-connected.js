@@ -4,22 +4,31 @@ import ToDoList from "./list.js";
 import Nav from "react-bootstrap/Nav";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
+//import useAjax2 from "../hooks/ajax2";
 import useAjax from "../hooks/ajax";
-import { ShowContext } from "../../context/showmanager.js";
-import Show from "../show/show.js";
+import { ShowContext } from "../../context/statemanager.js";
+//import Show from "../show/show.js";
 import Container from "react-bootstrap/Container";
 import "./todo.scss";
-
+const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
 const ToDo = () => {
   // const [list, setList] = useState([]);
   const context = useContext(ShowContext);
-
   const [_addItem, _toggleComplete, _getToDoItems, _deleteToDoItem, list] =
     useAjax();
-  useEffect(_getToDoItems, [context.hideComplete]);
-  //useEffect(_getToDoItems, [])
-  console.log("Context.Mode: ", context.hideComplete);
+  //const [setOptions] = useAjax2();
 
+  /*useEffect(
+    () =>
+      setOptions({
+        url: todoAPI,
+        method: "get",
+        mode: "cors",
+        cache: "no-cache",
+      }),
+    []);*/
+  // useEffect()
+  useEffect(_getToDoItems, [context.hideComplete]);
   return (
     <>
       <header>
@@ -29,9 +38,6 @@ const ToDo = () => {
           Complete
         </h2>
       </header>
-      <section>
-        <Show />
-      </section>
       <Container className="todo">
         <Row>
           <Col>
