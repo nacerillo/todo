@@ -7,7 +7,7 @@ class Show extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      maxVisible: 5,
+      itemsOnPage: 5,
       hideComplete: false,
       toggleMode: this.toggleMode,
       // limit: 5,

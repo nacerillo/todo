@@ -7,7 +7,7 @@ import Col from "react-bootstrap/Col";
 //import useAjax2 from "../hooks/ajax2";
 import useAjax from "../hooks/ajax";
 import { ShowContext } from "../../context/showmanager.js";
-import Show from "../show/show.js";
+//import Show from "../show/show.js";
 import Container from "react-bootstrap/Container";
 import "./todo.scss";
 const todoAPI = "https://api-js401.herokuapp.com/api/v1/todo";
